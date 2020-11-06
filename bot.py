@@ -56,15 +56,20 @@ def spliter(string):
 
 
 def w_day(day, month, year):
-    w = int(datetime(year, month, day).strftime("%V"))
+    week = int(datetime(year, month, day).strftime("%V"))
     d = datetime(year, month, day).strftime("%A")
     
-    if w % 3 == 0:
-        shift = "вечерняя"
+    if week % 3 == 0:
+        shift = "вечерняя смена (14:30 - 23:00)"
     else:
-        shift = "утренняя"
+        shift = "утренняя смена (7:00 - 15:30)"
+        
+    if d == "Saturday":
+        shift = "выходной"
+    elif d == "Sunday":
+        shift = "выходной"
     
-    return "{} {} {}\n{}, {} смена".format(day, month_name[month], year, day_of_week[d], shift)
+    return "{} {} {}\n{}, {}".format(day, month_name[month], year, day_of_week[d], shift)
 
 
 @bot.message_handler(commands=['start'])
@@ -80,7 +85,7 @@ def handle_text(message):
                 response = spliter(str(message.text))
                 bot.send_message(message.chat.id, response)    
         except:
-                bot.send_message(message.chat.id, "Неверный формат даты.\nПример:\n5  12  2020")
+                bot.send_message(message.chat.id, "Неверный формат даты.\nПример:\n5 12 2021")
              
         
 bot.polling(none_stop=True, interval=0)    
