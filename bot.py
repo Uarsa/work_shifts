@@ -5,6 +5,21 @@ from datetime import datetime
 bot = telebot.TeleBot("1292084246:AAHOLimjTFKaEajErlOmDUPDETRHiianBXg")
 
 
+month_name = {
+    1: "января",
+    2: "февраля",
+    3: "марта",
+    4: "апреля",
+    5: "мая",
+    6: "июня",
+    7: "июля",
+    8: "августа",
+    9: "сентября",
+    10: "октября",
+    11: "ноября",
+    12: "декабря"
+    }
+
 day_of_week = {
         "Monday": "понедельник",
         "Tuesday": "вторник",
@@ -41,7 +56,7 @@ def spliter(string):
 
 
 def w_day(day, month, year):
-    w = int(datetime(year=2020, month=12, day=15).strftime("%V"))
+    w = int(datetime(year, month, day).strftime("%V"))
     d = datetime(year, month, day).strftime("%A")
     
     if w % 3 == 0:
@@ -49,7 +64,7 @@ def w_day(day, month, year):
     else:
         shift = "утренняя"
     
-    return "{}, {} смена".format(day_of_week[d], shift)
+    return "{} {} {}\n{}, {} смена".format(day, month_name[month], year, day_of_week[d], shift)
 
 
 @bot.message_handler(commands=['start'])
