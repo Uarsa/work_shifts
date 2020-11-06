@@ -76,7 +76,7 @@ def w_day(day, month, year):
 def handle_start(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
         user_markup.row('/start')
-        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример: 5 12 2021", reply_markup=user_markup)
+        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример:\n9 12 2021", reply_markup=user_markup)
         
         
 @bot.message_handler(content_types=['text'])
@@ -85,7 +85,7 @@ def handle_text(message):
                 response = spliter(str(message.text))
                 bot.send_message(message.chat.id, response)    
         except:
-                bot.send_message(message.chat.id, "Неверный формат даты.\nПример:\n3\n5 8\n10 12 2021")
+                bot.send_message(message.chat.id, "Неверный формат даты.\nПримеры:\n3\n5 8\n10 12 2021")
              
         
 bot.polling(none_stop=True, interval=0)    
