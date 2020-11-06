@@ -56,7 +56,7 @@ def w_day(day, month, year):
 def handle_start(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
         user_markup.row('/start')
-        bot.send_message(message.from_user.id, "Привет!\nПришли дату в формате дд мм гг\nЛибо без месяца и/или года, в таком случае они будут текущими.", reply_markup=user_markup)
+        bot.send_message(message.from_user.id, "Привет!\nПришли дату в формате ДАТА МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.", reply_markup=user_markup)
         
         
 @bot.message_handler(content_types=['text'])
@@ -65,7 +65,7 @@ def handle_text(message):
                 response = spliter(str(message.text))
                 bot.send_message(message.chat.id, response)    
         except:
-                bot.send_message(message.chat.id, "ОШИБКА...")
+                bot.send_message(message.chat.id, "Неверный формат даты.\nПример:\n5 12 2020")
              
         
 bot.polling(none_stop=True, interval=0)    
