@@ -40,7 +40,7 @@ def spliter(string):
     return w_day(day, month, year)
 
 
-def w_day(day, month=current_month, year=current_year):
+def w_day(day, month, year):
     w = int(datetime(year=2020, month=12, day=15).strftime("%V"))
     d = datetime(year, month, day).strftime("%A")
     
@@ -56,7 +56,7 @@ def w_day(day, month=current_month, year=current_year):
 def handle_start(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
         user_markup.row('/start')
-        bot.send_message(message.from_user.id, "Привет!/nПришли дату в формате дд мм гг./nЛибо без месяца и/или года, в таком случае они будут текущими.", reply_markup=user_markup)
+        bot.send_message(message.from_user.id, "Привет!\nПришли дату в формате дд мм гг\nЛибо без месяца и/или года, в таком случае они будут текущими.", reply_markup=user_markup)
         
         
 @bot.message_handler(content_types=['text'])
