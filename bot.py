@@ -60,9 +60,9 @@ def w_day(day, month, year):
     d = datetime(year, month, day).strftime("%A")
     
     if week % 3 == 0:
-        shift = "вечерняя смена (14:30 - 23:00)"
+        shift = "вечерняя смена\n(14:30 - 23:00)"
     else:
-        shift = "утренняя смена (7:00 - 15:30)"
+        shift = "утренняя смена\n(7:00 - 15:30)"
         
     if d == "Saturday":
         shift = "выходной"
