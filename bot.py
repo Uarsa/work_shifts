@@ -78,7 +78,7 @@ dt = "**9 12 2021**"
 def handle_start(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
         user_markup.row('/start')
-        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример ", dt, reply_markup=user_markup)
+        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример " + dt, reply_markup=user_markup)
         
         
 @bot.message_handler(content_types=['text'])
