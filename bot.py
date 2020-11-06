@@ -71,12 +71,14 @@ def w_day(day, month, year):
     
     return "{} {} {}\n{}, {}".format(day, month_name[month], year, day_of_week[d], shift)
 
+dt = "**9 12 2021**"
+
 
 @bot.message_handler(commands=['start'])
 def handle_start(message):
         user_markup = telebot.types.ReplyKeyboardMarkup(True, True)
         user_markup.row('/start')
-        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример __9122021__", reply_markup=user_markup)
+        bot.send_message(message.from_user.id, "Пришли дату в формате:\nЧИСЛО МЕСЯЦ ГОД\nЛибо без месяца и/или года, в таком случае они будут текущими.\nНапример ", dt, reply_markup=user_markup)
         
         
 @bot.message_handler(content_types=['text'])
